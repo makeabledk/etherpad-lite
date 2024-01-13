@@ -5,7 +5,7 @@ const express = require('../express');
 const log4js = require('log4js');
 const proxyaddr = require('proxy-addr');
 const settings = require('../../utils/Settings');
-const socketio = require('socket.io');
+const {Server} = require('socket.io');
 const socketIORouter = require('../../handler/SocketIORouter');
 const hooks = require('../../../static/js/pluginfw/hooks');
 const padMessageHandler = require('../../handler/PadMessageHandler');
@@ -51,7 +51,8 @@ exports.expressCreateServer = (hookName, args, cb) => {
   // there shouldn't be a browser that isn't compatible to all
   // transports in this list at once
   // e.g. XHR is disabled in IE by default, so in IE it should use jsonp-polling
-  io = socketio({
+
+  io = new Server({
     transports: settings.socketTransportProtocols,
   }).listen(args.server, {
     /*
