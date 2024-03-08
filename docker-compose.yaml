@@ -1,0 +1,37 @@
+version: "3.8"
+
+# Add this file to extend the docker-compose setup, e.g.:
+# docker-compose build --no-cache
+# docker-compose up -d --build --force-recreate
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        ETHERPAD_PLUGINS:
+      # change from development to production if needed
+      target: etherpad-builder
+    tty: true
+    stdin_open: true
+    volumes:
+      # no volume mapping of node_modules as otherwise the build-time installed plugins will be overwritten with the mount
+      # the same applies to package.json and pnpm-lock.yaml in root dir as these would also get overwritten and build time installed plugins will be removed
+      - ./src:/opt/etherpad-lite/src
+      - ./bin:/opt/etherpad-lite/bin
+      - ./keys:/opt/etherpad-lite/keys
+    environment:
+      # change from development to production if needed
+      NODE_ENV: development
+      FIREBASE_SERVICE_ACCOUNT_KEY: "/opt/etherpad-lite/keys/firebase.json"
+      ADMIN_PASSWORD: ${DOCKER_COMPOSE_APP_DEV_ADMIN_PASSWORD}
+      # For now, the env var DEFAULT_PAD_TEXT cannot be unset or empty; it seems to be mandatory in the latest version of etherpad
+      DEFAULT_PAD_TEXT: ${DOCKER_COMPOSE_APP_DEV_ENV_DEFAULT_PAD_TEXT:- }
+      DISABLE_IP_LOGGING: ${DOCKER_COMPOSE_APP_DEV_ENV_DISABLE_IP_LOGGING:-true}
+      SOFFICE: ${DOCKER_COMPOSE_APP_DEV_ENV_SOFFICE:-null}
+      TRUST_PROXY: ${DOCKER_COMPOSE_APP_DEV_ENV_TRUST_PROXY:-true}
+    restart: always
+    ports:
+      - "${DOCKER_COMPOSE_APP_DEV_PORT_PUBLISHED:-9001}:${DOCKER_COMPOSE_APP_DEV_PORT_TARGET:-9001}"
+    networks:
+      - default

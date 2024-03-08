@@ -205,17 +205,17 @@
    * https://www.npmjs.com/package/ueberdb2
    */
 
-  "dbType": "${DB_TYPE:dirty}",
+  "dbType": "realtime",
   "dbSettings": {
-    "host":       "${DB_HOST:undefined}",
-    "port":       "${DB_PORT:undefined}",
-    "database":   "${DB_NAME:undefined}",
-    "user":       "${DB_USER:undefined}",
-    "password":   "${DB_PASS:undefined}",
-    "charset":    "${DB_CHARSET:undefined}",
-    "filename":   "${DB_FILENAME:var/dirty.db}",
-    "collection": "${DB_COLLECTION:undefined}",
-    "url":        "${DB_URL:undefined}"
+    "clientOptions": {
+      "apiKey": "AIzaSyCBRUvpKZ53WYKltVBmpKQj0BbXWdgVCGE",
+      "authDomain": "ma-notepad.firebaseapp.com",
+      "databaseURL": "https://ma-notepad-default-rtdb.europe-west1.firebasedatabase.app",
+      "projectId": "ma-notepad",
+      "storageBucket": "ma-notepad.appspot.com",
+      "messagingSenderId": "429722777586",
+      "appId": "1:429722777586:web:edd9c7881115da99e31d6b"
+    }
   },
 
   /*
