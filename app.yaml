@@ -1,0 +1,16 @@
+runtime: custom
+env: flex
+
+network:
+  session_affinity: true
+
+automatic_scaling:
+  min_num_instances: 1
+
+env_variables:
+  NODE_ENV: "production"
+  FIREBASE_SERVICE_ACCOUNT_KEY: "/opt/etherpad-lite/keys/firebase.json"
+  ADMIN_PASSWORD: 1234kode
+  DEFAULT_PAD_TEXT: ""
+  DISABLE_IP_LOGGING: true
+  TRUST_PROXY: true

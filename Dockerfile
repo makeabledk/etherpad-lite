@@ -1,10 +1,11 @@
+#!/bin/bash
 # Etherpad Lite Dockerfile
 #
 # https://github.com/ether/etherpad-lite
 #
 # Author: muxator
 
-FROM node:lts-alpine AS etherpad-builder
+FROM  --platform=linux/amd64 node:lts-alpine AS etherpad-builder
 LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
 ARG TIMEZONE=
