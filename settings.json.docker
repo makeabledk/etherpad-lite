@@ -163,7 +163,7 @@
    */
   "ip": "${IP:0.0.0.0}",
   "port": "${PORT:9001}",
-
+  
   /*
    * Option to hide/show the settings.json in admin page.
    *
@@ -217,7 +217,7 @@
       "appId": "1:429722777586:web:edd9c7881115da99e31d6b"
     }
   },
-
+  "cors": "*",
   /*
    * The default text of a pad
    */
@@ -279,7 +279,7 @@
    * If this option is enabled, a user must have a session to access pads.
    * This effectively allows only group pads to be accessed.
    */
-  "requireSession": "${REQUIRE_SESSION:false}",
+  "requireSession": "true",
 
   /*
    * Users may edit pads but not create new ones.
@@ -295,7 +295,7 @@
    * This will improve the loading performance massively, but makes it difficult
    * to debug the javascript/css
    */
-  "minify": "${MINIFY:true}",
+  "minify": "true",
 
   /*
    * How long may clients use served javascript code (in seconds)?
@@ -333,7 +333,7 @@
    *
    * Note: "/admin" always requires authentication.
    */
-  "requireAuthentication": "${REQUIRE_AUTHENTICATION:false}",
+  "requireAuthentication": false,
 
   /*
    * Require authorization by a module, or a user with is_admin set, see below.
@@ -383,7 +383,7 @@
      * significant usability drawbacks vs. "Lax". See
      * https://stackoverflow.com/q/41841880 for discussion.
      */
-    "sameSite": "${COOKIE_SAME_SITE:Lax}",
+    "sameSite": "None",
 
     /*
      * How long (in milliseconds) after navigating away from Etherpad before the
@@ -513,7 +513,7 @@
     "admin": {
       // 1) "password" can be replaced with "hash" if you install ep_hash_auth
       // 2) please note that if password is null, the user will not be created
-      "password": "${ADMIN_PASSWORD:null}",
+      "password": "kode1234!",
       "is_admin": true
     },
     "user": {
@@ -639,7 +639,7 @@
    *
    * Valid values: DEBUG, INFO, WARN, ERROR
    */
-  "loglevel": "${LOGLEVEL:INFO}",
+  "loglevel": "DEBUG",
 
   /* Override any strings found in locale directories */
   "customLocaleStrings": {},

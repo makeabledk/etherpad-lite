@@ -1,5 +1,6 @@
 runtime: custom
 env: flex
+service: etherpad
 
 network:
   session_affinity: true
@@ -10,6 +11,7 @@ automatic_scaling:
 env_variables:
   NODE_ENV: "production"
   FIREBASE_SERVICE_ACCOUNT_KEY: "/opt/etherpad-lite/keys/firebase.json"
+  DOCKER_COMPOSE_APP_DEV_PORT_PUBLISHED: 8080
   ADMIN_PASSWORD: 1234kode
   DEFAULT_PAD_TEXT: ""
   DISABLE_IP_LOGGING: true

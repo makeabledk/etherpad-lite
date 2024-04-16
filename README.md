@@ -1,3 +1,19 @@
+# Google cloud compile guide
+
+# Build new docker image locally
+docker compose build  
+# Tag docket image to match artifact name on GCP TAGVERSION is the new tag version eg. v3, v4 or something else.
+docker tag etherpad-lite_app europe-west3-docker.pkg.dev/ma-notepad/etherpad-lite/etherpad:latest
+
+# authenticate with service account (Only needed the first time)
+cat keys/firebase_base64.json | docker login -u _json_key_base64 --password-stdin https://europe-west3-docker.pkg.dev
+
+# Push locally build image to articaft registry
+docker push europe-west3-docker.pkg.dev/ma-notepad/etherpad-lite/etherpad:latest
+
+# Deploy appeninge with build image
+gcloud app deploy --image-url=europe-west3-docker.pkg.dev/ma-notepad/etherpad-lite/etherpad:latest
+
 # Etherpad: A real-time collaborative editor for the web
 
 ![Demo Etherpad Animated Jif](doc/images/etherpad_demo.gif "Etherpad in action")

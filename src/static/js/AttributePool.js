@@ -197,7 +197,7 @@ class AttributePool {
    *     state will lead to pool corruption.
    */
   fromJsonable(obj) {
-    this.numToAttrib = obj.numToAttrib;
+    this.numToAttrib = obj.numToAttrib !== undefined ? obj.numToAttrib : {};
     this.nextNum = obj.nextNum;
     this.attribToNum = {};
     for (const n of Object.keys(this.numToAttrib)) {

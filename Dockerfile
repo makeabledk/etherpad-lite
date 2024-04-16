@@ -5,7 +5,7 @@
 #
 # Author: muxator
 
-FROM  --platform=linux/amd64 node:lts-alpine AS etherpad-builder
+FROM  node:lts-alpine AS etherpad-builder
 LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
 ARG TIMEZONE=

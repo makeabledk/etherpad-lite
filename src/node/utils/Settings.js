@@ -231,6 +231,8 @@ exports.toolbar = {
  */
 exports.requireSession = false;
 
+exports.cors = '*';
+
 /**
  * A flag that prevents users from creating new pads
  */

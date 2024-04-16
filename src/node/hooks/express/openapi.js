@@ -650,12 +650,13 @@ exports.expressPreSession = async (hookName, {app}) => {
       // start and bind to express
       api.init();
       app.use(apiRoot, async (req, res) => {
+        res.header('Access-Control-Allow-Origin', settings.cors);
         let response = null;
         try {
           if (style === APIPathStyle.REST) {
             // @TODO: Don't allow CORS from everywhere
             // This is purely to maintain compatibility with old swagger-node-express
-            res.header('Access-Control-Allow-Origin', '*');
+            // res.header('Access-Control-Allow-Origin', '*');
           }
           // pass to openapi-backend handler
           response = await api.handleRequest(req, req, res);
